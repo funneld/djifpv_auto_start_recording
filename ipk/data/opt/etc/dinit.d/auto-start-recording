@@ -1,0 +1,4 @@
+type = scripted
+command = modmanager enable diy_glasses auto_start_recording
+stop-command = modmanager disable diy_glasses auto_start_recording
+
