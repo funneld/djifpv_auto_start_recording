@@ -1,5 +1,5 @@
 Package: auto-start-recording
-Version: 0.1.0
+Version: 0.1.1
 Maintainer: funnel
 Description: Auto starts recording whenever a link with the Airunit is present.
 Architecture: armv7-3.2

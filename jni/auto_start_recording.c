@@ -11,23 +11,30 @@ int32_t _ZN19GlassRacingChnlMenu7timeOutEv (void* this) {
 	int32_t ret = 0;
 	
 	if (!timeOut && !getInstance){
-		void *guiLib = dlopen("/system/lib/libtp1801_gui.so",1);
 		
-		timeOut = dlsym (guiLib, "_ZN19GlassRacingChnlMenu7timeOutEv");
-		if (timeOut == 0)
-		{
-			printf("dlsym: %s\n", dlerror());
-			return 0;
+		timeOut = dlsym (RTLD_NEXT, "_ZN19GlassRacingChnlMenu7timeOutEv");
+		if (timeOut == 0){
+			guiLib = dlopen("/system/lib/libtp1801_gui.so", 1);
+			timeOut = dlsym (guiLib, "_ZN19GlassRacingChnlMenu7timeOutEv");
+			if (timeOut == 0)
+			{
+				printf("dlsym: %s\n", dlerror());
+				return 0;
+			}
 		}
-	
-		getInstance = dlsym (guiLib, "_ZN17GlassUserSettings11getInstanceEv");
-		if (getInstance == 0)
-		{
-			printf("dlsym: %s\n", dlerror());
-			return 0;
+		
+		getInstance = dlsym (RTLD_NEXT, "_ZN17GlassUserSettings11getInstanceEv");
+		if (getInstance == 0){
+			if(!guiLib){guiLib = dlopen("/system/lib/libtp1801_gui.so", 1);}
+			getInstance = dlsym (guiLib, "_ZN17GlassUserSettings11getInstanceEv");
+			if (getInstance == 0)
+			{
+				printf("dlsym: %s\n", dlerror());
+				return 0;
+			}
 		}
 	}
-
+	
 	uint32_t inst = getInstance();
 
 	gs_link_stat_t link = GS_LINK_STAT_UKNOWN;

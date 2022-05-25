@@ -11,6 +11,7 @@ typedef enum Record_sender {
     RECORD_DISARM=1
 } Record_sender;
 
+static void *guiLib = 0;
 static bool restart_record = true;
 static int32_t (* gs_modem_get_link_state_wrap)(void *_gs_info, enum gs_link_stat_t *) = 0;
 static int32_t (* gs_lv_transcode_record)(void *_gs_info, bool b_record, Record_sender sender) = 0;
