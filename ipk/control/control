@@ -1,5 +1,5 @@
 Package: auto-start-recording
-Version: 0.1.3
+Version: 0.1.2
 Maintainer: funnel
 Description: Auto starts recording whenever a link with the Airunit is present.
 Architecture: pigeon-glasses
