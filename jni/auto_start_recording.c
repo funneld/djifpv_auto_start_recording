@@ -17,7 +17,7 @@ void _ZN19GlassRacingChnlMenu7timeOutEv(void* this) {
 			if (timeOut == 0)
 			{
 				printf("dlsym: %s\n", dlerror());
-				return 0;
+				return;
 			}
 		}
 
@@ -28,7 +28,7 @@ void _ZN19GlassRacingChnlMenu7timeOutEv(void* this) {
 			if (getInstance == 0)
 			{
 				printf("dlsym: %s\n", dlerror());
-				return 0;
+				return;
 			}
 		}
 	}
