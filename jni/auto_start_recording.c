@@ -60,7 +60,8 @@ void _ZN19GlassRacingChnlMenu7timeOutEv(void* this) {
 		while(cnt < 20){ //check rec state for max 2 seconds
 			cnt += 1;
 			record_state = gs_gui_config->gs_lv_transcode_get_state(gs_gui_config->gs_info);
-			if(record_state != RECORD_STATE_RECORDING){
+			if(record_state == RECORD_STATE_IDLE){
+				usleep(750000); //corrupts file without some delay
 				gs_gui_config->gs_lv_transcode_record(gs_gui_config->gs_info, true, RECORD_BUTTON);
 				printf("RESTART RECORDING AFTER A DISARM...\n");
 				break;
