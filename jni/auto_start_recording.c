@@ -54,7 +54,9 @@ void _ZN19GlassRacingChnlMenu7timeOutEv(void* this) {
 		restart_record = true;
 		printf("LINK LOST!\n");
 	}
-
+	
+	
+/* 
 	if((prev_arm_flag - arm_flag) == 1){
 		int cnt = 0;
 		while(cnt < 20){ //check rec state for max 2 seconds
@@ -72,7 +74,8 @@ void _ZN19GlassRacingChnlMenu7timeOutEv(void* this) {
 
 	prev_arm_flag = arm_flag;
 
-
+ */ //restart record after disarm doesn't work reliably. Leave it here for potential future use.
+ 
 	timeOut(this);
 
 	return;
